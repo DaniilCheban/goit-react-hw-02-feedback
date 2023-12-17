@@ -11,18 +11,22 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  countTotalFeedBack = () => {
+
+  handleLeaveFeedback = type => {
+    this.setState(prevState => ({ [type]: prevState[type] + 1 }));
+  };
+
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   };
+
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
-    const total = this.countTotalFeedBack();
-    return total === 0 ? 0 : Math.round(good / total);
+    const total = this.countTotalFeedback();
+    return total === 0 ? 0 : Math.round((good / total) * 100);
   };
-  handleLeaveFeedBack = type => {
-    this.setState(prevState => ({ [type]: prevState[type] + 1 }));
-  };
+
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
@@ -54,4 +58,5 @@ class App extends Component {
     );
   }
 }
+
 export { App };

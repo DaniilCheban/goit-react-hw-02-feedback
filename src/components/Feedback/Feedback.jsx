@@ -1,12 +1,12 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 
-class Feedback extends Components {
+class Feedback extends Component {
   render() {
     const { options, onLeaveFeedback } = this.props;
     return (
       <div>
         {options.map(option => (
-          <button key={option} on onClick={() => onLeaveFeedback(option)}>
+          <button key={option} onClick={() => onLeaveFeedback(option)}>
             {option}
           </button>
         ))}
@@ -14,4 +14,5 @@ class Feedback extends Components {
     );
   }
 }
+
 export { Feedback };
